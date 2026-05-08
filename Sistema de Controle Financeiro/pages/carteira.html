@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/carteira.css">
+    <title>Sistema de Controle Financeiro</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li>Controle Financeiro</li>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="carteira.html">Carteira</a></li>
+                <li><a href="#">Recorrentes</a></li>
+                <li><a href="historico.html">Histórico</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="carteira-container">
+        <h1 class="titulo-centralizado">Carteira</h1>
+        <div class="grid-principal">
+            <div class="coluna-movimentacoes">
+                <section class="card-entrada">
+                    <div class="recorrente">
+                        <h3>Entradas Recorrentes</h3>
+                        <h4>Salário Líquido</h4>
+                        <p>R$ 1.800,00</p>
+                    </div>
+                    <div class="formulario-container">
+                        <h3>Nova Entrada</h3>
+                        <form id="form-entrada" class="form-horizontal">
+                            <input type="text" id="desc-entrada" placeholder="Descrição" required>
+                            <input type="number" id="valor-entrada" placeholder="R$ 0,00" required>
+                            <button type="submit" class="btn-entrada">Adicionar Entrada</button>
+                        </form>
+                    </div>
+                </section>
+                <section class="card-saida">
+                    <div class="recorrente">
+                        <h3>Saídas Recorrentes</h3>
+                        <h4>Aluguel</h4>
+                        <p>R$ 0,00</p>
+                    </div>
+                    <div class="formulario-container">
+                        <h3>Nova Saída</h3>
+                        <form id="form-saida" class="form-horizontal">
+                            <input type="text" id="desc-saida" placeholder="Descrição" required>
+                            <input type="number" id="valor-saida" placeholder="R$ 0,00" required>
+                            <button type="submit" class="btn-saida">Adicionar Saída</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+            <aside class="coluna-saldo">
+                <div class="card-saldo">
+                    <h2>Saldo Atual</h2>
+                    <p id="saldo-atual-carteira" class="value">R$ 0,00</p>
+                </div>
+            </aside>
+        </div>
+        <section class="card-transacoes-recentes">
+            <h3 class="titulo-centralizado-t">Transações Recentes</h3>
+            <div id="lista-transacoes">
+                <p class="vazio">Nenhuma movimentação encontrada.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>Sistema desenvolvido por <strong>Kauê Fernandes</strong>.</p>
+            <ul class="social-links">
+                <li><a href="https://www.instagram.com/kauefernandescp?igsh=MTRlaDFpdGxuaGZudg=="><img src="../assets/images/instagram.png" alt="Instagram"></a></li>
+                <li><a href="https://www.linkedin.com/in/kauêfernandes?utm_source=share_via&utm_content=profile&utm_medium=member_android"><img src="../assets/images/linkedin.png" alt="LinkedIn"></a></li>
+                <li><a href="https://github.com/kaue-fernandescp"><img src="../assets/images/github.png" alt="GitHub"></a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="../js/carteira.js"></script>
+</body>
+</html>
