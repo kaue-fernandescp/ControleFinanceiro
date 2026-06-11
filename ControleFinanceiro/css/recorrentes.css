@@ -1,0 +1,144 @@
+:root {
+    --bg-color: #0d0d0d;           /* Fundo principal quase preto */
+    --card-bg: #161b16;            /* Fundo dos cards (cinza muito escuro esverdeado) */
+    --card-bg-red: #1c1414;        /* Fundo do card de gastos */
+    --accent-green: #22c55e;       /* Verde vibrante para destaques */
+    --accent-red: #ef4444;         /* Vermelho para gastos */
+    --text-primary: #ffffff;       /* Texto branco */
+    --text-secondary: #9ca3af;     /* Texto cinza para subtítulos */
+    --border-color: #262626;       /* Cor das bordas finas */
+    --rgb-green: 34, 197, 94;        /* Cor para o card de entradas */
+    --rgb-red: 239, 68, 68;          /* Cor para o card de saídas */
+    --rgb-grey: 26, 26, 26;         /* Cor para o card de transações recentes */
+}
+
+/* Botões */
+.botao-nova-entrada {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    padding: 10px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    background-color: #111;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+.botao-nova-saida {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    padding: 10px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    background-color: #111;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+.botao-nova-entrada:hover {
+    color: white;
+    background-color: rgba(var(--rgb-green), 0.4);
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(var(--rgb-green), 0.3);
+    transition: 0.3s;
+}
+
+.botao-nova-saida:hover {
+    color: white;
+    background-color: rgba(var(--rgb-red), 0.4);
+    box-shadow: 0 0 10px rgba(var(--card-bg-red), 0.2);
+    border: 1px solid rgba(var(--rgb-red), 0.3);
+    transition: 0.3s;
+}
+
+/*Container de entradas*/
+.container-entradas {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+/*Container de saídas*/
+.container-saidas {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+/*Título clicável*/
+summary {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+/* Adiciona uma seta ao título clicável */
+summary::before {
+    content: "➤ ";
+    font-size: 18px;
+    margin-right: 10px;
+    transition: transform 0.2s ease;
+}
+
+/* Gira a seta quando abrir o menu */
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+/* Container do conteúdo */
+.conteudo {
+    margin-top: 15px;
+    padding-left: 15px;
+}
+
+/* Itens */
+.item {
+    margin-bottom: 15px;
+}
+
+/* Checkbox e título do item */
+.item-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Checkbox */
+.item-checkbox {
+    cursor: pointer;
+}
+
+/* Título do item */
+.titulo-item {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Valor do item */
+.valor {
+    font-size: 16px;
+    color: #e0e0e0;
+    margin: 2px 0;
+    padding-left: 24px;
+}
+
+
+/* Descrição do item */
+.descricao {
+    font-size: 14px;
+    color: #aaaaaa;
+    margin: 0;
+    padding-left: 24px;
+}
+
+/* Riscar o item quando estiver desmarcado */
+.item-checkbox:not(:checked) + .titulo-item {
+    text-decoration: line-through;
+    color: #777;
+}
