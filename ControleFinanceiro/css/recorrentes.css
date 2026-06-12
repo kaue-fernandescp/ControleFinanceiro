@@ -12,6 +12,12 @@
     --rgb-grey: 26, 26, 26;         /* Cor para o card de transações recentes */
 }
 
+h1 {
+    text-align: center;
+    border-bottom: 1px solid white;
+    padding: 20px;
+}
+
 /* Botões */
 .botao-nova-entrada {
     margin-top: 15px;
