@@ -27,14 +27,18 @@
                 <section class="card-entrada">
                     <div class="recorrente">
                         <h3>Entradas Recorrentes</h3>
-                        <h4>Salário Líquido</h4>
-                        <p id="recorrente-entrada-valor">R$ 0,00</p>
+                        <h4 id="recorrente-entrada-valor">R$ 0,00</h4>
+                        <div id="lista-entradas-recorrentes">
+                        </div>
                     </div>
                     <div class="formulario-container">
                         <h3>Nova Entrada</h3>
                         <form id="form-entrada" class="form-horizontal">
                             <input type="text" id="desc-entrada" placeholder="Descrição" required>
-                            <input type="number" id="valor-entrada" placeholder="R$ 0,00" required>
+                            <input type="number" id="valor-entrada" placeholder="R$ 0,00" step="any" required>
+                            <select id="categoria-entrada" required>
+                                <option value="" disabled selected>Categoria</option>
+                            </select>
                             <button type="submit" class="btn-entrada">Adicionar Entrada</button>
                         </form>
                     </div>
@@ -42,14 +46,18 @@
                 <section class="card-saida">
                     <div class="recorrente">
                         <h3>Saídas Recorrentes</h3>
-                        <h4>Aluguel</h4>
-                        <p id="recorrente-saida-valor">R$ 0,00</p>
+                        <h4 id="recorrente-saida-valor">R$ 0,00</h4>
+                        <div id="lista-saidas-recorrentes">
+                        </div>
                     </div>
                     <div class="formulario-container">
                         <h3>Nova Saída</h3>
                         <form id="form-saida" class="form-horizontal">
                             <input type="text" id="desc-saida" placeholder="Descrição" required>
-                            <input type="number" id="valor-saida" placeholder="R$ 0,00" required>
+                            <input type="number" id="valor-saida" placeholder="R$ 0,00" step="any" required>
+                            <select id="categoria-saida" required>
+                                <option value="" disabled selected>Categoria</option>
+                            </select>
                             <button type="submit" class="btn-saida">Adicionar Saída</button>
                         </form>
                     </div>

@@ -55,6 +55,43 @@ h1 {
 .recorrente {
     flex: 1;
     border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Valor total de recorrentes */
+.recorrente h4 {
+    text-align: end;
+}
+
+/* Cada item recorrente */
+.item-recorrente-linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.item-recorrente-linha:last-child {
+    border-bottom: none;
+}
+
+.item-recorrente-linha h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.item-recorrente-linha p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 /* Espaçamento do formulário */
@@ -62,10 +99,41 @@ h1 {
     flex: 2;
 }
 
+.formulario-container h3 {
+    padding-bottom: 10px;
+}
+
 /* Inputs lado a lado */
 .form-horizontal {
     display: flex;
     gap: 10px;
+}
+
+/* Inputs e select */
+.form-horizontal input,
+.form-horizontal select {
+    background-color: #0d0d0d;
+    border: 1px solid #262626;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.form-horizontal input[type="text"] {
+    flex: 2;
+    min-width: 120px;
+}
+
+.form-horizontal select {
+    flex: 1.5;
+    min-width: 110px;
+    cursor: pointer;
+}
+
+.form-horizontal button {
+    padding: 10px 15px;
+    white-space: nowrap;
 }
 
 /* Coluna do saldo */
