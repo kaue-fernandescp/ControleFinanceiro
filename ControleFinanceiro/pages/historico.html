@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/historico.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>Sistema de Controle Financeiro</title>
 </head>
@@ -19,8 +20,43 @@
             </ul>
         </nav>
     </header>
-    <main>
-
+    <main class="historico-container">
+        <h1 class="titulo-centralizado">Histórico de Movimentações</h1>
+        <section class="card-filtros">
+            <div class="busca-grupo">
+                <input type="text" id="filtro-busca" placeholder="Busca por descrição...">
+            </div>
+            <div class="busca-grupo">
+                <select id="filtro-tipo">
+                    <option value="todos">Todos os Tipos</option>
+                    <option value="1">Apenas Entradas</option>
+                    <option value="2">Apenas Saídas</option>
+                </select>
+            </div>
+            <button id="botao-filtrar" class="botao-acao">Filtrar</button>
+            <button id="botao-limpar" class="botao-limpar">Limpar</button>
+        </section>
+        <section class="card-tabela">
+            <div class="tabela">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data / Hora</th>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpo-tabela">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <div class="paginacao-container">
+            <button id="botao-anterior" disabled>Anterior</button>
+            <span id="info-pagina">1</span>
+            <button id="botao-proximo">Próximo</button>
+        </div>
     </main>
     <footer>
         <div class="footer-content">
@@ -34,5 +70,6 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/app.js"></script>
+    <script src="../js/historico.js"></script>
 </body>
 </html>
