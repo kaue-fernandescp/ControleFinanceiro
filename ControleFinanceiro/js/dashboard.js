@@ -15,14 +15,24 @@ async function inicializarDashboard() {
     const primeiroDiaAno = new Date(anoAtual, 0, 1).toISOString();
     const ultimoDiaAno = new Date(anoAtual, 11, 31, 23, 59, 59).toISOString();
 
-    const { data: movimentacoes, error } = await supabase
+    const { data: movimentacoes, error: erroMov } = await supabase
         .from('movimentacoes')
         .select('mov_created_at, mov_valor, mov_tipo')
         .gte('mov_created_at', primeiroDiaAno)
         .lte('mov_created_at', ultimoDiaAno);
 
-    if (error) {
-        console.error("Erro ao carregar dados do dashboard:", error.message);
+    if (erroMov) {
+        console.error("Erro ao carregar dados do dashboard:", erroMov.message);
+        return;
+    }
+
+    const { data: recorrentes, error: erroRec } = await supabase
+        .from('recorrentes')
+        .select('rec_valor, rec_tipo')
+        .eq('rec_status', true);
+
+    if (erroRec) {
+        console.error("Erro ao carregar recorrentes do dashboard:", erroRec.message);
         return;
     }
 
@@ -31,6 +41,21 @@ async function inicializarDashboard() {
 
     let entradasAnoPorMes = new Array(12).fill(0);
     let saidasAnoPorMes = new Array(12).fill(0);
+
+    if (recorrentes) {
+        recorrentes.forEach(item => {
+            const valorNum = Number(item.rec_valor);
+            const tipoNum = Number(item.rec_tipo);
+
+            if (tipoNum === 1) {
+                entradasMes += valorNum;
+                entradasAnoPorMes[mesAtual] += valorNum;
+            } else if (tipoNum === 2) {
+                saidasMes += valorNum;
+                saidasAnoPorMes[mesAtual] += valorNum;
+            }
+        });
+    }
 
     movimentacoes.forEach(mov => {
         const dataMov = new Date(mov.mov_created_at);

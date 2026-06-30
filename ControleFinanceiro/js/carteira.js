@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     await carregarValoresRecorrentes();
     await atualizarDashboard();
     await exibirTransacoes();
+    formulariosCaixa();
 });
 
 // Função buscar e exibir recorrentes ativos do banco
@@ -78,17 +79,24 @@ async function salvarTransacao(descricao, valor, tipoId, categoriaId) {
         return;
     }
 
+    const dadosInserção = {
+        mov_descricao: descricao,
+        mov_valor: parseFloat(valor),
+        mov_tipo: parseInt(tipoId),
+        mov_status: false,
+    };
+
+    if (tipoId === 1 || tipoId === 2) {
+        if (!categoriaId || categoriaId === "") {
+            alert("Por favor, selecione uma categoria antes de salvar.");
+            return;
+        }
+        dadosInserção.mov_categoria = parseInt(categoriaId);
+    }
+
     const { error } = await supabase
         .from('movimentacoes')
-        .insert([
-            {
-                mov_descricao: descricao,
-                mov_valor: parseFloat(valor),
-                mov_tipo: parseInt(tipoId),
-                mov_categoria: parseInt(categoriaId),
-                mov_status: false,
-            }
-        ]);
+        .insert([dadosInserção]);
 
     if (error) {
         console.error("Erro ao salvar movimentação no Supabase:", error.message);
@@ -126,36 +134,52 @@ async function atualizarDashboard() {
         return;
     }
 
-    let entradasTotal = 0;
-    let saidasTotal = 0;
+    let entradasMensais = 0;
+    let saidasMensais = 0;
+    let totalCaixaGuardado = 0;
 
     if (recorrentes) {
         recorrentes.forEach(item => {
-            if (item.rec_tipo === 1) {
-                entradasTotal += Number(item.rec_valor);
-            } else if (item.rec_tipo === 2) {
-                saidasTotal += Number(item.rec_valor);
-            }
+            if (item.rec_tipo === 1) entradasMensais += Number(item.rec_valor);
+            if (item.rec_tipo === 2) saidasMensais += Number(item.rec_valor);
         });    
     }
     
     if (movimentacoes) {
         movimentacoes.forEach(mov => {
-            if (mov.mov_tipo === 1) {
-                entradasTotal += Number(mov.mov_valor);
-            } else if (mov.mov_tipo === 2) {
-                saidasTotal += Number(mov.mov_valor);
+            const tipo = Number(mov.mov_tipo);
+            const valor = Number(mov.mov_valor);
+            if (tipo === 1) {
+                entradasMensais += valor;    
+            } else if (tipo === 2) {
+                saidasMensais += valor;        
+            } else if (tipo === 3) {
+                totalCaixaGuardado += valor;   
+            } else if (tipo === 4) {
+                totalCaixaGuardado -= valor;   
             }
         }); 
     }
     
+    const saldoMensalLiquido = entradasMensais - saidasMensais;
+    const saldoTotalConsolidado = saldoMensalLiquido + totalCaixaGuardado;
 
-    const saldoTotal = entradasTotal - saidasTotal;
-    const elSaldo = document.getElementById('saldo-atual-carteira');
+    const elSaldoMensal = document.getElementById('saldo-mensal-carteira');
+    const elSaldoCaixa = document.getElementById('saldo-caixa-carteira');
+    const elSaldoGeral = document.getElementById('saldo-atual-carteira');
 
-    if (elSaldo) {
-        elSaldo.innerText = saldoTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        elSaldo.style.color = saldoTotal >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+    if (elSaldoMensal) {
+        elSaldoMensal.innerText = saldoMensalLiquido.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        elSaldoMensal.style.color = saldoMensalLiquido >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+    }
+
+    if (elSaldoCaixa) {
+        elSaldoCaixa.innerText = totalCaixaGuardado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    if (elSaldoGeral) {
+        elSaldoGeral.innerText = saldoTotalConsolidado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        elSaldoGeral.style.color = saldoTotalConsolidado >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
     }
 }
 
@@ -188,9 +212,23 @@ async function exibirTransacoes() {
         const item = document.createElement('div');
         item.classList.add('item-transacao');
 
-        const isEntrada = transacao.mov_tipo === 1;
-        const corClasse = isEntrada ? 'txt-entrada' : 'txt-saida';
-        const sinal = isEntrada ? '+' : '-';
+        const tipo = Number(transacao.mov_tipo);
+        let corClasse = '';
+        let sinal = '';
+
+        if (tipo === 1) {
+            corClasse = 'txt-entrada';
+            sinal = '+';
+        } else if (tipo === 2) {
+            corClasse = 'txt-saida';
+            sinal = '-';
+        } else if (tipo === 3) {
+            corClasse = 'txt-caixa-guardar';
+            sinal = '+';
+        } else if (tipo === 4) {
+            corClasse = 'txt-caixa-resgatar';
+            sinal = '-';
+        }
 
         const dataFormatada = new Date(transacao.mov_created_at).toLocaleDateString('pt-BR');
 
@@ -200,7 +238,7 @@ async function exibirTransacoes() {
                 <strong class="desc-transacao">${transacao.mov_descricao}</strong>
             </div>
             <div class="info-direita">
-                <span class="valor-transacao ${corClasse}">
+                <span class="valor-transacao ${corClasse}" style="${tipo === 3 ? 'color: #38bdf8;' : tipo === 4 ? 'color: #eab308;' : ''}">
                     ${sinal} ${Number(transacao.mov_valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                 </span>
             </div>
@@ -239,6 +277,29 @@ async function carregarCategoriasDropdown() {
         opcaoSaida.textContent = cat.cat_nome;
         selectSaida.appendChild(opcaoSaida);
     });
+}
+
+// Função para configurar os forms da Caixa
+function formulariosCaixa() {
+    const formGuardar = document.getElementById('form-guardar-caixa');
+    if (formGuardar) {
+        formGuardar.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const valor = document.getElementById('valor-guardar').value;
+            await salvarTransacao("Guardar na Caixa", valor, 3, 15);
+            formGuardar.reset();
+        });
+    }
+
+    const formResgatar = document.getElementById('form-resgatar-caixa');
+    if (formResgatar) {
+        formResgatar.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const valor = document.getElementById('valor-resgatar').value;
+            await salvarTransacao("Retirada da Caixa", valor, 4, 15);
+            formResgatar.reset();
+        });
+    }
 }
 
 // Formulário de entrada

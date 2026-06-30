@@ -65,8 +65,29 @@
             </div>
             <aside class="coluna-saldo">
                 <div class="card-saldo">
-                    <h2>Saldo Atual</h2>
-                    <p id="saldo-atual-carteira" class="value">R$ 0,00</p>
+                    <div class="bloco-saldo-liquido">
+                        <h3>Saldo Líquido Mensal</h3>
+                        <p id="saldo-mensal-carteira">R$ 0,00</p>
+                    </div>
+                    <div class="bloco-saldo-guardado">
+                        <h3>Dinheiro Guardado (Caixa)</h3>
+                        <p id="saldo-caixa-carteira">R$ 0,00</p>
+                    </div>
+                    <div class="bloco-saldo-total">
+                        <h2>Saldo Total</h2>
+                        <p id="saldo-atual-carteira" class="value">R$ 0,00</p>
+                    </div>
+                </div>
+                <div class="card-saldo">
+                    <h3 class="card-saldo-t">Gerenciar Caixa</h3>      
+                    <form class="form-guardar" id="form-guardar-caixa">
+                        <input type="number" id="valor-guardar" placeholder="Guardar R$" step="any" required>
+                        <button class="botao-guardar" type="submit">Guardar</button>
+                    </form>
+                    <form class="form-resgatar" id="form-resgatar-caixa">
+                        <input type="number" id="valor-resgatar" placeholder="Resgatar R$" step="any" required>
+                        <button class="botao-resgatar" type="submit">Resgatar</button>
+                    </form>
                 </div>
             </aside>
         </div>

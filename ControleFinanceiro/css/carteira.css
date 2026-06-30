@@ -141,6 +141,39 @@ h1 {
     display: flex;
 }
 
+/* Bloco dos saldos */
+.bloco-saldo-liquido {
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.bloco-saldo-guardado {
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.bloco-saldo-total {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+.bloco-saldo-liquido h3,
+.bloco-saldo-guardado h3 {
+    color: var(--text-secondary); 
+    font-size: 0.85rem; 
+    margin-bottom: 4px;
+}
+
+.bloco-saldo-liquido p,
+.bloco-saldo-guardado p,
+.bloco-saldo-total p {
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
 /* Saldo */
 .card-saldo {
     width: 100%;
@@ -151,6 +184,43 @@ h1 {
     background-color: rgba(var(--rgb-grey), 0.5);
     border: 1px solid rgba(var(--rgb-grey), 1);
     border-radius: 5px;
+}
+
+/* Caixa */
+.card-saldo-t {
+    color: var(--text-primary); 
+    font-size: 0.95rem; 
+    margin-bottom: 15px; 
+    text-align: center;
+}
+
+.form-guardar {
+    display: flex; 
+    gap: 8px; 
+    margin-bottom: 12px;
+}
+
+.form-guardar input {
+    flex: 1; 
+    padding: 6px; 
+    border-radius: 6px; 
+    border: 1px solid var(--border-color); 
+    background: #000; 
+    color: #fff;
+}
+
+.form-resgatar {
+    display: flex; 
+    gap: 8px;
+}
+
+.form-resgatar input {
+    flex: 1; 
+    padding: 6px; 
+    border-radius: 6px; 
+    border: 1px solid var(--border-color); 
+    background: #000; 
+    color: #fff;
 }
 
 /* Transações Recentes */
@@ -234,4 +304,24 @@ h1 {
 .btn-saida:hover {
     background-color: var(--accent-red);
     color: white;
+}
+
+.botao-guardar {
+    background-color: #0284c7; 
+    color: white; 
+    border: none; 
+    padding: 6px 12px; 
+    border-radius: 6px; 
+    font-weight: bold; 
+    cursor: pointer;
+}
+
+.botao-resgatar {
+    background-color: #eab308; 
+    color: black; 
+    border: none; 
+    padding: 6px 12px; 
+    border-radius: 6px; 
+    font-weight: bold; 
+    cursor: pointer;
 }
