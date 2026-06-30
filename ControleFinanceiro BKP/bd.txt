@@ -1,0 +1,6 @@
+Supabase
+
+Login com o GitHub
+
+Project: ControleFinanceiro
+Password: Kaue_05012510

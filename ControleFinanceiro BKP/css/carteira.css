@@ -1,0 +1,327 @@
+/* Cores principais */
+:root {
+    --bg-color: #0d0d0d;           /* Fundo principal quase preto */
+    --card-bg: #161b16;            /* Fundo dos cards (cinza muito escuro esverdeado) */
+    --card-bg-red: #1c1414;        /* Fundo do card de gastos */
+    --accent-green: #22c55e;       /* Verde vibrante para destaques */
+    --accent-red: #ef4444;         /* Vermelho para gastos */
+    --text-primary: #ffffff;       /* Texto branco */
+    --text-secondary: #9ca3af;     /* Texto cinza para subtítulos */
+    --border-color: #262626;       /* Cor das bordas finas */
+    --rgb-green: 34, 197, 94;        /* Cor para o card de entradas */
+    --rgb-red: 239, 68, 68;          /* Cor para o card de saídas */
+    --rgb-grey: 26, 26, 26;         /* Cor para o card de transações recentes */
+}
+
+h1 {
+    text-align: center;
+    border-bottom: 1px solid white;
+    padding: 20px;
+}
+
+/* Container do grid */
+.grid-principal {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Layout para a section Entrada*/
+.card-entrada {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+    background-color: rgba(var(--rgb-green), 0.1);
+    border: 1px solid rgba(var(--rgb-green), 0.3);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+/* Layout para a section Saída*/
+.card-saida {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+    background-color: rgba(var(--rgb-red), 0.1);
+    border: 1px solid rgba(var(--rgb-red), 0.3);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+/* Divisão da tela 1/3 para recorrente e 2/3 para formulário*/
+.recorrente {
+    flex: 1;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Valor total de recorrentes */
+.recorrente h4 {
+    text-align: end;
+}
+
+/* Cada item recorrente */
+.item-recorrente-linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.item-recorrente-linha:last-child {
+    border-bottom: none;
+}
+
+.item-recorrente-linha h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.item-recorrente-linha p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Espaçamento do formulário */
+.formulario-container {
+    flex: 2;
+}
+
+.formulario-container h3 {
+    padding-bottom: 10px;
+}
+
+/* Inputs lado a lado */
+.form-horizontal {
+    display: flex;
+    gap: 10px;
+}
+
+/* Inputs e select */
+.form-horizontal input,
+.form-horizontal select {
+    background-color: #0d0d0d;
+    border: 1px solid #262626;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.form-horizontal input[type="text"] {
+    flex: 2;
+    min-width: 120px;
+}
+
+.form-horizontal select {
+    flex: 1.5;
+    min-width: 110px;
+    cursor: pointer;
+}
+
+.form-horizontal button {
+    padding: 10px 15px;
+    white-space: nowrap;
+}
+
+/* Coluna do saldo */
+.coluna-saldo {
+    display: flex;
+}
+
+/* Bloco dos saldos */
+.bloco-saldo-liquido {
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.bloco-saldo-guardado {
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.bloco-saldo-total {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+.bloco-saldo-liquido h3,
+.bloco-saldo-guardado h3 {
+    color: var(--text-secondary); 
+    font-size: 0.85rem; 
+    margin-bottom: 4px;
+}
+
+.bloco-saldo-liquido p,
+.bloco-saldo-guardado p,
+.bloco-saldo-total p {
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+/* Saldo */
+.card-saldo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(var(--rgb-grey), 0.5);
+    border: 1px solid rgba(var(--rgb-grey), 1);
+    border-radius: 5px;
+}
+
+/* Caixa */
+.card-saldo-t {
+    color: var(--text-primary); 
+    font-size: 0.95rem; 
+    margin-bottom: 15px; 
+    text-align: center;
+}
+
+.form-guardar {
+    display: flex; 
+    gap: 8px; 
+    margin-bottom: 12px;
+}
+
+.form-guardar input {
+    flex: 1; 
+    padding: 6px; 
+    border-radius: 6px; 
+    border: 1px solid var(--border-color); 
+    background: #000; 
+    color: #fff;
+}
+
+.form-resgatar {
+    display: flex; 
+    gap: 8px;
+}
+
+.form-resgatar input {
+    flex: 1; 
+    padding: 6px; 
+    border-radius: 6px; 
+    border: 1px solid var(--border-color); 
+    background: #000; 
+    color: #fff;
+}
+
+/* Transações Recentes */
+.card-transacoes-recentes {
+    width: 30%;
+    margin: 0 auto;
+    min-height: 150px;
+    background-color: rgba(var(--rgb-grey), 0.1);
+    border: 1px solid rgba(var(--rgb-grey), 1);
+    border-radius: 5px;
+}
+
+.titulo-centralizado-t {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-primary);
+}
+
+.item-transacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.2s;
+}
+
+.item-transacao:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.item-transacao:last-child {
+    border-bottom: none;
+}
+
+.data-transacao {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 2px;
+}
+
+.txt-entrada { color: var(--accent-green); font-weight: bold; }
+.txt-saida { color: var(--accent-red); font-weight: bold; }
+
+.empty-msg {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 20px;
+}
+
+/* Botão entrada */
+.btn-entrada {
+    background-color: transparent;
+    border: 1px solid var(--accent-green);
+    color: var(--accent-green);
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Botão entrada efeito */
+.btn-entrada:hover {
+    background-color: var(--accent-green);
+    color: white;
+}
+
+/* Botão saída */
+.btn-saida {
+    background-color: transparent;
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Botão saída efeito */
+.btn-saida:hover {
+    background-color: var(--accent-red);
+    color: white;
+}
+
+.botao-guardar {
+    background-color: #0284c7; 
+    color: white; 
+    border: none; 
+    padding: 6px 12px; 
+    border-radius: 6px; 
+    font-weight: bold; 
+    cursor: pointer;
+}
+
+.botao-resgatar {
+    background-color: #eab308; 
+    color: black; 
+    border: none; 
+    padding: 6px 12px; 
+    border-radius: 6px; 
+    font-weight: bold; 
+    cursor: pointer;
+}

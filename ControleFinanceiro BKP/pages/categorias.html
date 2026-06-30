@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/categorias.css">
+    <title>Sistema de Controle Financeiro</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li>Controle Financeiro</li>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="carteira.html">Carteira</a></li>
+                <li><a href="recorrentes.html">Recorrentes</a></li>
+                <li><a href="categorias.html">Categorias</a></li>
+                <li><a href="historico.html">Histórico</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container-categorias">
+        <h1>Categorias</h1>
+        <!-- Formulário Escondido !-->
+            <div id="form-container" class="form-overlay" style="display: none;">
+                <div class="form-content">
+                    <h3 id="form-titulo">Nova Categoria</h3>
+                    <form id="form-categoria" onsubmit="salvarNovaCategoria(event)">
+                        <input type="hidden" id="form-cat-id">
+                        <div class="form-group">
+                            <label for="form-nome">Nome</label>
+                            <input type="text" id="form-nome" required placeholder="Ex: Salário, Aluguel...">
+                        </div>
+                        <div class="form-botoes">
+                            <button type="button" class="botao-cancelar" onclick="fecharForm()">Cancelar</button>
+                            <button type="submit" class="botao-salvar">Salvar</button>   
+                        </div>
+                    </form>
+                </div>
+            </div>
+        <!-- Fim Formulário Escondido !-->
+        <div class="acoes">
+            <button class="botao-adicionar" onclick="abrirForm()">Adicionar</button>
+        </div>
+        <div class="lista-categorias" id="container-lista">
+            <!-- Código base
+            <div class="linha-categoria">
+                <span class="nome-categoria">${cat.cat_nome}</span>
+                <div class="botoes-categoria">
+                    <button class="botao-editar" onclick="editarCategoria(${cat.cat_id}, '${cat.cat_nome}')">Editar</button>
+                    <button class="botao-excluir" onclick="excluirCategoria(${cat.cat_id})">Excluir</button>
+                </div>
+            </div>
+            Código base !-->
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>Sistema desenvolvido por <strong>Kauê Fernandes</strong>.</p>
+            <ul class="social-links">
+                <li><a href="https://www.instagram.com/kauefernandescp?igsh=MTRlaDFpdGxuaGZudg=="><img src="../assets/images/instagram.png" alt="Instagram"></a></li>
+                <li><a href="https://www.linkedin.com/in/kauêfernandes?utm_source=share_via&utm_content=profile&utm_medium=member_android"><img src="../assets/images/linkedin.png" alt="LinkedIn"></a></li>
+                <li><a href="https://github.com/kaue-fernandescp"><img src="../assets/images/github.png" alt="GitHub"></a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/categorias.js"></script>
+</body>
+</html>

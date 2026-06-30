@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <title>Sistema de Controle Financeiro</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li>Controle Financeiro</li>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="carteira.html">Carteira</a></li>
+                <li><a href="recorrentes.html">Recorrentes</a></li>
+                <li><a href="categorias.html">Categorias</a></li>
+                <li><a href="historico.html">Histórico</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 class="titulo-centralizado">Dashboard</h1>
+        <section class="cards-container">
+            <div class="card-entrada">
+                <h3>Entradas (Mês Atual)</h3>
+                <p id="total-entradas">R$ 0,00</p>
+            </div>
+            <div class="card-saida">
+                <h3>Saídas (Mês Atual)</h3>
+                <p id="total-saidas">R$ 0,00</p>
+            </div>
+            <div class="card-saldo">
+                <h3>Saldo Mensal</h3>
+                <p id="saldo-total">R$ 0,00</p>
+            </div>
+        </section>
+        <section class="card-grafico" style="background-color: #161616; border: 1px solid #262626; border-radius: 8px; padding: 20px; margin-top: 30px;">
+            <h3 style="margin-top: 0; margin-bottom: 20px; color: #ffffff;">Visão Geral Anual</h3>
+            <div style="position: relative; height: 300px; width: 100%;">
+                <canvas id="grafico-anual"></canvas>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>Sistema desenvolvido por <strong>Kauê Fernandes</strong>.</p>
+            <ul class="social-links">
+                <li><a href="https://www.instagram.com/kauefernandescp?igsh=MTRlaDFpdGxuaGZudg=="><img src="../assets/images/instagram.png" alt="Instagram"></a></li>
+                <li><a href="https://www.linkedin.com/in/kauêfernandes?utm_source=share_via&utm_content=profile&utm_medium=member_android"><img src="../assets/images/linkedin.png" alt="LinkedIn"></a></li>
+                <li><a href="https://github.com/kaue-fernandescp"><img src="../assets/images/github.png" alt="GitHub"></a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
