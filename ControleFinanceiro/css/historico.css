@@ -23,7 +23,7 @@
 /* Título */
 .titulo-centralizado {
     text-align: center;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid white;
     padding-bottom: 20px;
     margin-bottom: 30px;
 }

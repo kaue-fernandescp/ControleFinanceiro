@@ -24,11 +24,11 @@
         <h1 class="titulo-centralizado">Dashboard</h1>
         <section class="cards-container">
             <div class="card-entrada">
-                <h3>Total Entradas (mes_atual)</h3>
+                <h3>Entradas (Mês Atual)</h3>
                 <p id="total-entradas">R$ 0,00</p>
             </div>
             <div class="card-saida">
-                <h3>Total Saídas (mes_atual)</h3>
+                <h3>Saídas (Mês Atual)</h3>
                 <p id="total-saidas">R$ 0,00</p>
             </div>
             <div class="card-saldo">
@@ -36,12 +36,10 @@
                 <p id="saldo-total">R$ 0,00</p>
             </div>
         </section>
-        <section class="content-row">
-            <div class="graficos">
-                <h3>Gráfico Anual</h3>
-                <div class="placeholder-grafico">
-                    <p>Espaço para gráfico anual</p>
-                </div>
+        <section class="card-grafico" style="background-color: #161616; border: 1px solid #262626; border-radius: 8px; padding: 20px; margin-top: 30px;">
+            <h3 style="margin-top: 0; margin-bottom: 20px; color: #ffffff;">Visão Geral Anual</h3>
+            <div style="position: relative; height: 300px; width: 100%;">
+                <canvas id="grafico-anual"></canvas>
             </div>
         </section>
     </main>
@@ -56,7 +54,8 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/app.js"></script>
-    <script src="../js/carteira.js"></script>
+    <script src="../js/dashboard.js"></script>
 </body>
 </html>

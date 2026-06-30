@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Função para carregar o histórico das movimentações
 async function carregarHistorico() {
     console.log(`Carregando histórico - Página: ${paginaAtual}`);
 
@@ -58,6 +59,7 @@ async function carregarHistorico() {
     atualizarBotoesPaginacao(count);
 }
 
+// Função para renderizar tabela
 function renderizarTabela(dados) {
     const corpoTabela = document.getElementById('corpo-tabela');
     if (!corpoTabela) return;
@@ -96,11 +98,13 @@ function renderizarTabela(dados) {
     });
 }
 
+// Função para alterar a página das movimentações
 function alterarPagina(direcao) {
     paginaAtual += direcao;
     carregarHistorico();
 }
 
+// Função para alterar as páginas
 function atualizarBotoesPaginacao(totalItens) {
     const btnAnterior = document.getElementById('botao-anterior');
     const btnProximo = document.getElementById('botao-proximo');
