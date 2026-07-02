@@ -4,7 +4,7 @@
     --card-bg: #161b16;            /* Fundo dos cards (cinza muito escuro esverdeado) */
     --card-bg-red: #1c1414;        /* Fundo do card de gastos */
     --accent-green: #22c55e;       /* Verde vibrante para destaques */
-    --accent-red: #ef4444;         /* Vermelho para gastos */
+    --accent-red: rgb(239, 68, 68);         /* Vermelho para gastos */
     --text-primary: #ffffff;       /* Texto branco */
     --text-secondary: #9ca3af;     /* Texto cinza para subtítulos */
     --border-color: #262626;       /* Cor das bordas finas */
@@ -103,6 +103,16 @@ tr:last-child td {
     color: var(--accent-red); 
 }
 
+.badge-entrada-caixa {
+    background-color: rgba(56, 189, 248, 0.1);
+    color: rgb(56, 189, 248); 
+}
+
+.badge-saida-caixa {
+    background-color: rgba(234, 179, 8, 0.1); 
+    color: rgb(234, 179, 8); 
+}
+
 .txt-entrada { 
     color: var(--accent-green); 
     font-weight: bold; 
@@ -111,6 +121,16 @@ tr:last-child td {
 .txt-saida { 
     color: var(--accent-red); 
     font-weight: bold; 
+}
+
+.txt-entrada-caixa {
+    color: #38bdf8; 
+    font-weight: bold;
+}
+
+.txt-saida-caixa {
+    color: #eab308; 
+    font-weight: bold;
 }
 
 /* Paginação */

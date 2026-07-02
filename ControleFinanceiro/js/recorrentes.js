@@ -29,6 +29,8 @@ async function carregarMenusRecorrentes() {
 // Função para renderizar os itens no HTML
 function renderizarItensNoMenu(listaItens, containerId) {
     const container = document.getElementById(containerId);
+    if (!container) return;
+
     container.innerHTML = '';
 
     if (listaItens.length === 0) {
@@ -36,18 +38,15 @@ function renderizarItensNoMenu(listaItens, containerId) {
         return;
     }
 
+    const gridContainer = document.createElement('div');
+    gridContainer.classList.add('grid-itens-recorrentes');
+
     listaItens.forEach(item => {
-        const checkedAttribute = item.rec_status ? 'checked' : '';
         const itemHTML = `
             <div class="item">
                 <div class="item-dados">
                     <div class="item-header">
-                        <input type="checkbox"
-                            class="item-checkbox"
-                            id="rec-${item.rec_id}"
-                            ${checkedAttribute}
-                            onchange="alterarStatusRecorrente(${item.rec_id}, this.checked)">
-                        <label for="rec-${item.rec_id}" class="titulo-item">${item.rec_nome}</label>
+                        <h3 class="titulo-item">${item.rec_nome}</h3>
                     </div>
                     <p class="valor">R$ ${Number(item.rec_valor).toFixed(2)}</p>
                     <p class="descricao">${item.rec_descricao || 'Sem descrição.'}</p>
@@ -57,9 +56,9 @@ function renderizarItensNoMenu(listaItens, containerId) {
                 </div>
             </div>
         `;
-
-        container.innerHTML += itemHTML;
+        gridContainer.innerHTML += itemHTML;
     });
+    container.appendChild(gridContainer);
 }
 
 // Função para alterar o status do item para contabilizar na conta do saldo

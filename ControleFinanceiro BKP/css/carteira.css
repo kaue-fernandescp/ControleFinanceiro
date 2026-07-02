@@ -1,16 +1,19 @@
 /* Cores principais */
 :root {
-    --bg-color: #0d0d0d;           /* Fundo principal quase preto */
-    --card-bg: #161b16;            /* Fundo dos cards (cinza muito escuro esverdeado) */
-    --card-bg-red: #1c1414;        /* Fundo do card de gastos */
-    --accent-green: #22c55e;       /* Verde vibrante para destaques */
-    --accent-red: #ef4444;         /* Vermelho para gastos */
-    --text-primary: #ffffff;       /* Texto branco */
-    --text-secondary: #9ca3af;     /* Texto cinza para subtítulos */
-    --border-color: #262626;       /* Cor das bordas finas */
-    --rgb-green: 34, 197, 94;        /* Cor para o card de entradas */
-    --rgb-red: 239, 68, 68;          /* Cor para o card de saídas */
-    --rgb-grey: 26, 26, 26;         /* Cor para o card de transações recentes */
+    --bg-color: #0d0d0d;            /* Fundo principal quase preto */
+    --card-bg: #161b16;             /* Fundo dos cards (cinza muito escuro esverdeado) */
+    --card-bg-red: #1c1414;         /* Fundo do card de gastos */
+    --accent-green: #22c55e;        /* Verde vibrante para destaques */
+    --accent-red: #ef4444;          /* Vermelho para gastos */
+    --text-primary: #ffffff;        /* Texto branco */
+    --text-secondary: #9ca3af;      /* Texto cinza para subtítulos */
+    --border-color: #262626;        /* Cor das bordas finas */
+    --rgb-green: 34, 197, 94;         /* Cor para o card de entradas */
+    --rgb-red: 239, 68, 68;           /* Cor para o card de saídas */
+    --rgb-grey: 26, 26, 26;           /* Cor para o card de transações recentes */
+    --accent-blue: #38bdf8;         /* Azul vibrante para o Caixa */
+    --accent-yellow: #eab308;       /* Amarelo sofisticado para Resgates */
+    --card-bg-caixa: #11161d;       /* Fundo sutil azulado para o card de caixa */
 }
 
 h1 {
@@ -35,7 +38,7 @@ h1 {
     align-items: center;
     background-color: rgba(var(--rgb-green), 0.1);
     border: 1px solid rgba(var(--rgb-green), 0.3);
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 20px;
 }
 
@@ -47,7 +50,7 @@ h1 {
     align-items: center;
     background-color: rgba(var(--rgb-red), 0.1);
     border: 1px solid rgba(var(--rgb-red), 0.3);
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 20px;
 }
 
@@ -136,41 +139,102 @@ h1 {
     white-space: nowrap;
 }
 
+/* Caixa */
+.card-caixa {
+    background-color: var(--card-bg-caixa);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 10px;
+    padding: 24px;
+    margin-top: 20px;
+}
+
+.card-caixa h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+.caixa-container {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+}
+
+.form-guardar {
+    display: flex;
+    gap: 12px;
+    flex: 1;
+}
+
+.form-guardar input[type="number"] {
+    flex: 1;
+    background-color: #0d0d0d;
+    border: 1px solid #262626;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.form-resgatar {
+    display: flex;
+    gap: 12px;
+    flex: 1;
+}
+
+.form-resgatar input[type="number"] {
+    flex: 1;
+    background-color: #0d0d0d;
+    border: 1px solid #262626;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
 /* Coluna do saldo */
 .coluna-saldo {
     display: flex;
 }
 
 /* Bloco dos saldos */
-.bloco-saldo-liquido {
-    margin-bottom: 15px;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 15px;
+.bloco-saldo-liquido h3,
+.bloco-saldo-guardado h3 {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.bloco-saldo-liquido p {
+    font-size: 1rem;
+    margin: 0;
 }
 
 .bloco-saldo-guardado {
-    margin-bottom: 15px;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 15px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+    margin-top: 16px;
 }
 
-.bloco-saldo-total {
-    margin-bottom: 15px;
-    padding-bottom: 15px;
+.bloco-saldo-total h2 {
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+    margin-top: 16px;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    text-align: center;
 }
 
-.bloco-saldo-liquido h3,
-.bloco-saldo-guardado h3 {
-    color: var(--text-secondary); 
-    font-size: 0.85rem; 
-    margin-bottom: 4px;
+.bloco-saldo-total .value {
+    font-size: 1.85rem !important;
 }
 
 .bloco-saldo-liquido p,
 .bloco-saldo-guardado p,
 .bloco-saldo-total p {
-    font-weight: bold;
-    margin: 0;
     text-align: center;
 }
 
@@ -183,44 +247,7 @@ h1 {
     align-items: center;
     background-color: rgba(var(--rgb-grey), 0.5);
     border: 1px solid rgba(var(--rgb-grey), 1);
-    border-radius: 5px;
-}
-
-/* Caixa */
-.card-saldo-t {
-    color: var(--text-primary); 
-    font-size: 0.95rem; 
-    margin-bottom: 15px; 
-    text-align: center;
-}
-
-.form-guardar {
-    display: flex; 
-    gap: 8px; 
-    margin-bottom: 12px;
-}
-
-.form-guardar input {
-    flex: 1; 
-    padding: 6px; 
-    border-radius: 6px; 
-    border: 1px solid var(--border-color); 
-    background: #000; 
-    color: #fff;
-}
-
-.form-resgatar {
-    display: flex; 
-    gap: 8px;
-}
-
-.form-resgatar input {
-    flex: 1; 
-    padding: 6px; 
-    border-radius: 6px; 
-    border: 1px solid var(--border-color); 
-    background: #000; 
-    color: #fff;
+    border-radius: 10px;
 }
 
 /* Transações Recentes */
@@ -230,7 +257,7 @@ h1 {
     min-height: 150px;
     background-color: rgba(var(--rgb-grey), 0.1);
     border: 1px solid rgba(var(--rgb-grey), 1);
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .titulo-centralizado-t {
@@ -263,8 +290,8 @@ h1 {
     margin-bottom: 2px;
 }
 
-.txt-entrada { color: var(--accent-green); font-weight: bold; }
-.txt-saida { color: var(--accent-red); font-weight: bold; }
+.txt-entrada { color: var(--accent-green); }
+.txt-saida { color: var(--accent-red); }
 
 .empty-msg {
     text-align: center;
@@ -281,6 +308,7 @@ h1 {
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 /* Botão entrada efeito */
@@ -298,6 +326,7 @@ h1 {
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 /* Botão saída efeito */
@@ -306,22 +335,36 @@ h1 {
     color: white;
 }
 
-.botao-guardar {
-    background-color: #0284c7; 
-    color: white; 
-    border: none; 
-    padding: 6px 12px; 
-    border-radius: 6px; 
-    font-weight: bold; 
+.btn-guardar {
+    background-color: transparent;
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: bold;
     cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
 }
 
-.botao-resgatar {
-    background-color: #eab308; 
-    color: black; 
-    border: none; 
-    padding: 6px 12px; 
-    border-radius: 6px; 
-    font-weight: bold; 
+.btn-guardar:hover {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+.btn-resgatar {
+    background-color: transparent;
+    border: 1px solid var(--accent-yellow);
+    color: var(--accent-yellow);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: bold;
     cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.btn-resgatar:hover {
+    background-color: var(--accent-yellow); 
+    color: white;
 }

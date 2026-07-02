@@ -29,6 +29,8 @@ async function carregarMenusRecorrentes() {
 // Função para renderizar os itens no HTML
 function renderizarItensNoMenu(listaItens, containerId) {
     const container = document.getElementById(containerId);
+    if (!container) return;
+
     container.innerHTML = '';
 
     if (listaItens.length === 0) {
@@ -37,7 +39,6 @@ function renderizarItensNoMenu(listaItens, containerId) {
     }
 
     listaItens.forEach(item => {
-        const checkedAttribute = item.rec_status ? 'checked' : '';
         const itemHTML = `
             <div class="item">
                 <div class="item-dados">

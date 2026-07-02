@@ -28,8 +28,7 @@
                     <div class="recorrente">
                         <h3>Entradas Recorrentes</h3>
                         <h4 id="recorrente-entrada-valor">R$ 0,00</h4>
-                        <div id="lista-entradas-recorrentes">
-                        </div>
+                        <div id="lista-entradas-recorrentes"></div>
                     </div>
                     <div class="formulario-container">
                         <h3>Nova Entrada</h3>
@@ -47,8 +46,7 @@
                     <div class="recorrente">
                         <h3>Saídas Recorrentes</h3>
                         <h4 id="recorrente-saida-valor">R$ 0,00</h4>
-                        <div id="lista-saidas-recorrentes">
-                        </div>
+                        <div id="lista-saidas-recorrentes"></div>
                     </div>
                     <div class="formulario-container">
                         <h3>Nova Saída</h3>
@@ -61,6 +59,19 @@
                             <button type="submit" class="btn-saida">Adicionar Saída</button>
                         </form>
                     </div>
+                </section>
+                <section class="card-caixa">
+                        <h3>Gerenciar Caixa (Reserva)</h3>
+                        <div class="caixa-container">
+                            <form class="form-guardar" id="form-guardar-caixa">
+                                <input type="number" id="valor-guardar" placeholder="R$ 0,00" step="any" required>
+                                <button class="btn-guardar" type="submit">Guardar</button>
+                            </form>
+                            <form class="form-resgatar" id="form-resgatar-caixa">
+                                <input type="number" id="valor-resgatar" placeholder="R$ 0,00" step="any" required>
+                                <button class="btn-resgatar" type="submit">Resgatar</button>
+                            </form>
+                        </div>      
                 </section>
             </div>
             <aside class="coluna-saldo">
@@ -77,17 +88,6 @@
                         <h2>Saldo Total</h2>
                         <p id="saldo-atual-carteira" class="value">R$ 0,00</p>
                     </div>
-                </div>
-                <div class="card-saldo">
-                    <h3 class="card-saldo-t">Gerenciar Caixa</h3>      
-                    <form class="form-guardar" id="form-guardar-caixa">
-                        <input type="number" id="valor-guardar" placeholder="Guardar R$" step="any" required>
-                        <button class="botao-guardar" type="submit">Guardar</button>
-                    </form>
-                    <form class="form-resgatar" id="form-resgatar-caixa">
-                        <input type="number" id="valor-resgatar" placeholder="Resgatar R$" step="any" required>
-                        <button class="botao-resgatar" type="submit">Resgatar</button>
-                    </form>
                 </div>
             </aside>
         </div>

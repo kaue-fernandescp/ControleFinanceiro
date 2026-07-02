@@ -78,11 +78,33 @@ function renderizarTabela(dados) {
     dados.forEach(mov => {
         const tr = document.createElement('tr');
 
-        const isEntrada = mov.mov_tipo == 1;
-        const classeCor = isEntrada ? 'txt-entrada' : 'txt-saida';
-        const badgeClasse = isEntrada ? 'badge-entrada' : 'badge-saida';
-        const tipoTexto = isEntrada ? 'Entrada' : 'Saída';
-        const sinal = isEntrada ? '+' : '-';
+        let tipo = Number(mov.mov_tipo);
+        let classeCor = '';
+        let badgeClasse = '';
+        let tipoTexto = '';
+        let sinal = '';
+
+        if (tipo === 1) {
+            classeCor = 'txt-entrada';
+            badgeClasse = 'badge-entrada';
+            tipoTexto = 'Entrada';
+            sinal = '+';
+        } else if (tipo === 2) {
+            classeCor = 'txt-saida';
+            badgeClasse = 'badge-saida';
+            tipoTexto = 'Saída'
+            sinal = '-';
+        } else if (tipo === 3) {
+            classeCor = 'txt-entrada-caixa';
+            badgeClasse = 'badge-entrada-caixa';
+            tipoTexto = 'Guardar na Caixa'
+            sinal = '+';
+        } else if (tipo === 4) {
+            classeCor = 'txt-saida-caixa';
+            badgeClasse = 'badge-saida-caixa';
+            tipoTexto = 'Retirada da Caixa';
+            sinal = '-';
+        }
 
         const dataObjeto = new Date(mov.mov_created_at);
         const dataFormatada = dataObjeto.toLocaleDateString('pt-BR');

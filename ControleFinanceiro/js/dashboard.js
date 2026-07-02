@@ -49,10 +49,8 @@ async function inicializarDashboard() {
 
             if (tipoNum === 1) {
                 entradasMes += valorNum;
-                entradasAnoPorMes[mesAtual] += valorNum;
             } else if (tipoNum === 2) {
                 saidasMes += valorNum;
-                saidasAnoPorMes[mesAtual] += valorNum;
             }
         });
     }
@@ -68,6 +66,14 @@ async function inicializarDashboard() {
         } else if (tipoNum === 2) {
             saidasAnoPorMes[mesMov] += valorNum;
         }
+
+        for (let m = 0; m <= mesAtual; m++) {
+                if (tipoNum === 1) {
+                    entradasAnoPorMes[m] += valorNum;
+                } else if (tipoNum === 2) {
+                    saidasAnoPorMes[m] += valorNum;
+                }
+            }
 
         if (dataMov >= new Date(primeiroDiaMes) && dataMov <= new Date(ultimoDiaMes)) {
             if (tipoNum === 1) entradasMes += valorNum;
